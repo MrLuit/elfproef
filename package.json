@@ -1,0 +1,69 @@
+{
+  "name": "elfproef",
+  "description": "Implementation of the 11-proof, a mathematical test used by the Dutch government for various digital identification numbers",
+  "version": "1.0.0",
+  "author": "Luit Hollander <luit@hollander.email> (https://luit.me)",
+  "repository": "https://github.com/MrLuit/elfproef.git",
+  "license": "MIT",
+  "main": "./dist/elfproef.node.js",
+  "module": "./dist/elfproef.js",
+  "typings": "./typings/src/index.d.ts",
+  "keywords": [
+    "elfproef",
+    "11-proef",
+    "negenproef",
+    "9-proef",
+    "check digit",
+    "bsn"
+  ],
+  "scripts": {
+    "tscheck": "tsc --noEmit --project tsconfig.json",
+    "tslint": "tslint --project .",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack/config.ts",
+    "clean": "rimraf ./dist && rimraf ./typings",
+    "test": "mocha -r ts-node/register ./tests/**/*.ts",
+    "prettier:diff": "prettier --write --config ./.prettierrc --list-different \"src/**/*.ts\" \"tests/**/*.ts\" \"webpack/**/*.ts\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "7.8.3",
+    "@babel/preset-env": "7.8.3",
+    "@types/chai": "4.2.7",
+    "@types/mocha": "5.2.7",
+    "@types/node": "13.1.7",
+    "@types/webpack": "4.41.2",
+    "@types/webpack-merge": "4.1.5",
+    "@types/webpack-node-externals": "1.7.0",
+    "awesome-typescript-loader": "5.2.1",
+    "chai": "4.2.0",
+    "cross-env": "6.0.3",
+    "husky": "4.0.10",
+    "lint-staged": "9.5.0",
+    "mocha": "7.0.0",
+    "prettier": "1.19.1",
+    "rimraf": "3.0.0",
+    "ts-node": "8.6.2",
+    "tslint": "5.20.1",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-microsoft-contrib": "6.2.0",
+    "typescript": "3.7.4",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10",
+    "webpack-merge": "4.2.2",
+    "webpack-node-externals": "1.7.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write --config ./.prettierrc --config-precedence file-override",
+      "tslint --project .",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "git update-index --again",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run tslint && npm run tscheck && npm run test"
+    }
+  }
+}

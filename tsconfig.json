@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "lib": ["dom", "es2017"],
+    "declaration": true,
+    "declarationDir": "typings",
+    "outDir": "./dist",
+    "target": "es2017",
+    "noEmitOnError": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./src/**/*",
+    "./tests/**/*",
+    "./webpack/**/*",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
