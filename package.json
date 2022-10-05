@@ -1,7 +1,7 @@
 {
   "name": "elfproef",
   "description": "Implementation of the 11-proof, a mathematical test used by the Dutch government for various digital identification numbers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Luit Hollander <luit@hollander.email> (https://luit.me)",
   "repository": "https://github.com/MrLuit/elfproef.git",
   "license": "MIT",
@@ -14,11 +14,13 @@
     "negenproef",
     "9-proef",
     "check digit",
-    "bsn"
+    "bsn",
+    "burgerservicenummer"
   ],
   "scripts": {
     "tscheck": "tsc --noEmit --project tsconfig.json",
     "tslint": "tslint --project .",
+    "tsbuild": "tsc --project tsconfig.json",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack/config.ts",
     "clean": "rimraf ./dist && rimraf ./typings",
     "test": "mocha -r ts-node/register ./tests/**/*.ts",
